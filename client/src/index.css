@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{ --bolt-green: #00C853; }
+
+body { @apply bg-gray-50 text-gray-900; }

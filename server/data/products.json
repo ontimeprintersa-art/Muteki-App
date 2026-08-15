@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Nike Air Force 1",
+    "image": "/images/chaussure.jpg",
+    "vendeur": "Papa Mike",
+    "location": "Kinshasa, Gombe",
+    "price": 45,
+    "currency": "USD",
+    "phone": "+243812345678",
+    "available": true
+  },
+  {
+    "id": 2,
+    "title": "Adidas Superstar",
+    "image": "/images/adidas.jpg",
+    "vendeur": "Sophie",
+    "location": "Kinshasa, Bandal",
+    "price": 38,
+    "currency": "USD",
+    "phone": "+243812987654",
+    "available": false
+  }
+]

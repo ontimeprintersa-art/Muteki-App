@@ -1,0 +1,9 @@
+{
+  "name": "muteki-netlify-functions",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "twilio": "^4.3.0",
+    "@supabase/supabase-js": "^2.30.0"
+  }
+}
