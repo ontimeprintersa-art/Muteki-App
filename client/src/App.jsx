@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Login from './components/Login'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api'
@@ -8,6 +9,15 @@ export default function App(){
     // Prefer the requested key muteki_admin_token, but accept existing adminToken for compatibility
     return !!(localStorage.getItem('muteki_admin_token') || localStorage.getItem('adminToken'))
   })
+
+  // Set initial axios Authorization header from stored token
+  useEffect(() => {
+    const token = localStorage.getItem('muteki_admin_token') || localStorage.getItem('adminToken')
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+      setIsAdmin(true)
+    }
+  }, [])
 
   useEffect(() => {
     const onLogin = () => {
