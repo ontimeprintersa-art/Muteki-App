@@ -14,7 +14,7 @@ export default function Login() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const token = localStorage.getItem('adminToken')
+    const token = localStorage.getItem('muteki_admin_token') || localStorage.getItem('adminToken')
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     }
@@ -83,8 +83,8 @@ export default function Login() {
       const token = res?.data?.adminToken
       if (!token) throw new Error('Pas de token retourné')
 
-      // Persist token (note: localStorage is vulnerable to XSS; prefer httpOnly cookie in production)
-      localStorage.setItem('adminToken', token)
+      // Persist token under the repo standard key and set axios header
+      localStorage.setItem('muteki_admin_token', token)
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       // notify app and close modal
