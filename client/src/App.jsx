@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import AdminProducts from './components/AdminProducts'
 import Search from './components/Search'
 import Login from './components/Login'
 
@@ -8,8 +9,9 @@ export default function App(){
   const [user, setUser] = useState(() => {
     try { return JSON.parse(localStorage.getItem('muteki_user')) } catch(e){ return null }
   })
+  const [adminOpen, setAdminOpen] = useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if(user) localStorage.setItem('muteki_user', JSON.stringify(user))
     else localStorage.removeItem('muteki_user')
   }, [user])
@@ -24,6 +26,7 @@ export default function App(){
               <div className="flex items-center gap-3">
                 <span className="text-sm text-gray-600">Connecté: {user.phone}</span>
                 <button className="bg-red-500 text-white px-3 py-1 rounded" onClick={()=>setUser(null)}>Déconnecter</button>
+                <button className="bg-gray-800 text-white px-3 py-1 rounded" onClick={()=>setAdminOpen(v=>!v)}>{adminOpen? 'Retour' : 'Admin'}</button>
               </div>
             ) : (
               <Login onLogin={u => setUser(u)} />
@@ -32,7 +35,11 @@ export default function App(){
         </header>
 
         <main>
-          <Search apiBase={API_BASE} />
+          {adminOpen ? (
+            <AdminProducts />
+          ) : (
+            <Search apiBase={API_BASE} />
+          )}
         </main>
       </div>
     </div>
