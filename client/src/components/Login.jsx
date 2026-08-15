@@ -25,6 +25,10 @@ export default function Login({ onLogin }) {
     try {
       const res = await axios.post('/api/auth-verify-otp', { phone, code })
       const user = res.data.user
+      const adminToken = res.data.adminToken
+      if (adminToken) {
+        localStorage.setItem('muteki_admin_token', adminToken)
+      }
       onLogin(user)
       setStep(0); setPhone(''); setCode('')
     } catch (e) {

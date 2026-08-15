@@ -16,6 +16,9 @@ export default function ProductEditor({ product = {}, onSaved = ()=>{}, onCancel
   const [uploading, setUploading] = useState(false)
   const [saving, setSaving] = useState(false)
 
+  const token = localStorage.getItem('muteki_admin_token')
+  if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
   const handleChange = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
   const handleFile = (e) => {

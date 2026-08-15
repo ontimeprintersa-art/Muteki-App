@@ -7,6 +7,9 @@ export default function AdminProducts(){
   const [loading, setLoading] = useState(false)
   const [editing, setEditing] = useState(null)
 
+  const token = localStorage.getItem('muteki_admin_token')
+  if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
   const fetchProducts = async () => {
     setLoading(true)
     try{
