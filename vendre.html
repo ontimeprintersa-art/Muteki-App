@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Vendre - Muteki</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+  <div class="logo">
+    Muteki
+    <small>Jeunes</small>
+  </div>
+
+  <a href="index.html" class="sell-btn">
+    ← Accueil
+  </a>
+
+</header>
+
+
+<main>
+
+<section class="seller-card">
+
+  <span class="seller-icon">🚀</span>
+
+  <h2>
+    Deviens vendeur
+  </h2>
+
+  <p>
+    Présente ton produit et développe
+    ton activité avec Muteki.
+  </p>
+
+</section>
+
+
+<section class="section">
+
+  <form
+    id="sellerForm"
+    class="seller-form"
+  >
+
+    <label>
+      Nom du produit
+      <input
+        type="text"
+        id="productName"
+        placeholder="Ex: Sac en Ankara"
+        required
+      >
+    </label>
+
+
+    <label>
+      Prix (Francs Congolais)
+      <input
+        type="number"
+        id="productPrice"
+        placeholder="25"
+        min="1"
+        required
+      >
+    </label>
+
+
+    <label>
+      Catégorie
+
+      <select id="productCategory" required>
+        <option value="">-- Sélectionne une catégorie --</option>
+        <option>Mode</option>
+        <option>Nourriture</option>
+        <option>Art</option>
+        <option>Tech</option>
+
+      </select>
+
+    </label>
+
+
+    <label>
+      Ta ville
+
+      <input
+        type="text"
+        id="productCity"
+        placeholder="Kinshasa"
+        required
+      >
+
+    </label>
+
+
+    <label>
+      Ton nom
+
+      <input
+        type="text"
+        id="sellerName"
+        placeholder="Ton nom"
+        required
+      >
+
+    </label>
+
+
+    <label>
+      Ton WhatsApp
+
+      <input
+        type="tel"
+        id="sellerWhatsapp"
+        placeholder="+243812345678"
+        required
+      >
+
+    </label>
+
+
+    <label>
+      Photo du produit
+
+      <input
+        type="file"
+        id="productImage"
+        accept="image/*"
+      >
+
+    </label>
+
+
+    <label>
+      Description
+
+      <textarea
+        id="productDescription"
+        rows="5"
+        placeholder="Décris ton produit..."
+      ></textarea>
+
+    </label>
+
+
+    <button
+      type="submit"
+      class="submit-btn"
+    >
+      🚀 Envoyer mon produit
+    </button>
+
+  </form>
+
+</section>
+
+</main>
+
+
+<script>
+
+const form =
+  document.getElementById("sellerForm");
+
+
+form.addEventListener(
+  "submit",
+  function(event) {
+
+    event.preventDefault();
+
+    const product =
+      document.getElementById("productName").value;
+
+    const price =
+      document.getElementById("productPrice").value;
+
+    const category =
+      document.getElementById("productCategory").value;
+
+    const city =
+      document.getElementById("productCity").value;
+
+    const seller =
+      document.getElementById("sellerName").value;
+
+    const whatsapp =
+      document.getElementById("sellerWhatsapp").value;
+
+    const description =
+      document.getElementById("productDescription").value;
+
+
+    const message =
+`🇨🇩 NOUVEAU PRODUIT - MADE IN CONGO JEUNES
+
+🛍️ Produit : ${product}
+💰 Prix : ${price} CDF
+📂 Catégorie : ${category}
+📍 Ville : ${city}
+
+👤 Vendeur : ${seller}
+📱 WhatsApp : ${whatsapp}
+
+📝 Description :
+${description}`;
+
+
+    const adminNumber =
+      "243812345678"; // Replace with admin WhatsApp number (format: 243XXXXXXXXX)
+
+
+    if (adminNumber === "243812345678") {
+
+      alert(
+        "⚠️ Ajoute le numéro WhatsApp administrateur dans vendre.html (ligne 194).\n\nFormat: 243XXXXXXXXX"
+      );
+
+      return;
+    }
+
+
+    window.open(
+      `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+
+    // Reset form
+    form.reset();
+    alert("✅ Ton produit a été envoyé ! L'équipe Muteki te contactera bientôt.");
+
+  }
+);
+
+</script>
+
+
+<style>
+
+.seller-form {
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.06);
+
+}
+
+.seller-form label {
+
+  display: block;
+
+  margin-bottom: 17px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+.seller-form input,
+.seller-form select,
+.seller-form textarea {
+
+  width: 100%;
+
+  margin-top: 7px;
+
+  padding: 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+}
+
+.seller-form input:focus,
+.seller-form select:focus,
+.seller-form textarea:focus {
+
+  border-color: var(--green);
+
+}
+
+.submit-btn {
+
+  width: 100%;
+
+  border: 0;
+
+  background: var(--green);
+
+  color: white;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: background 0.3s ease;
+
+}
+
+.submit-btn:hover {
+
+  background: #007a48;
+
+}
+
+</style>
+
+</body>
+</html>
