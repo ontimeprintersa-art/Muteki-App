@@ -1,0 +1,19 @@
+{
+  "name": "Muteki - Marketplace Congolaise",
+  "short_name": "Muteki",
+  "description": "Marketplace des jeunes entrepreneurs du Congo - Achetez et vendez local",
+  "start_url": "./index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f8",
+  "theme_color": "#009E60",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
